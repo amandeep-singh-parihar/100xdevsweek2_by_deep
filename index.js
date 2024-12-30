@@ -7,7 +7,6 @@
 // fs.readFile('a.txt','utf8',callbackFn);
 
 // ****************************************************************************************** //
-
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -40,7 +39,7 @@ function sum(n) {
   return sum;
 }
 
-function mul(n) {
+function fact(n) {
   var mul = 1;
   for (var i = 1; i <= n; ++i) {
     mul *= i;
@@ -52,7 +51,10 @@ app.get("/handleSum", (req, res) => {
   // var counter = req.query.counter;\
   // console.log(req.headers);
   // console.log(req.body); //This is to console
-  var counter = req.body.counter;
+  // var counter = req.body.counter;
+
+  var counter=req.query.counter;
+
   // if(counter<1000000)
   // {
   //   var calculatedSum=sum(counter);
@@ -66,7 +68,7 @@ app.get("/handleSum", (req, res) => {
   var ansObject = {
     name : req.body.name,
     sum: sum(counter),
-    mul: mul(counter),
+    fact: fact(counter),
   };
   res.status(200).send(ansObject);
   // var x=req.body.name;
